@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>My Color Extractor</title>
+        <link rel="stylesheet" href="static/css/styles.css" />
+    </head>
+
+    <body>
+
+    <!-- Page Header -->
+    <div class="header" id="myHeader">
+        <!-- Page Title -->
+        <h1>My Color Extractor</h1>
+        <!-- Image Selection -->
+        <form action="{{ url_for('uploader') }}" method="POST" enctype="multipart/form-data">
+            <label for="myfile">Select image file: </label>
+            <input type="file" id="myfile" name="file"/>
+            <br>
+            <input type="submit" value="Get File"/>
+        </form>
+    </div>
+
+    <!-- Photo Image -->
+    <div class="photo" id="myPhoto">
+        {% if not (photo_image == ""): %}
+            <img class="photo-img" src="{{ photo_image }}" width="200" height="200">
+        {% endif %}
+    </div>
+
+    <!-- List of colors in image -->
+    <div class="colors" id="myColors">
+        <table class="center">
+        {% for color in colors: %}
+            <tr style="background:white">
+                <td style="background:{{ color[0] }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td>{{ color[0] }}</td>
+                <td>{{ color[1] }}</td>>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+
+    </body>
+
+</html>
